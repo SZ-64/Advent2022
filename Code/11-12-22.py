@@ -1,10 +1,13 @@
 import Utils
+import sys
 from Classes.Monkey import Monkey
 from Classes.Monkey import Operations
 
 
+sys.set_int_max_str_digits(0)
+
 rounds_one = 20
-rounds_two = 1000
+rounds_two = 10000
 monkeys = []
 
 def reset():
@@ -63,12 +66,15 @@ def part_one():
 
 
 def part_two():
+    factor = 1
+    for monkey in monkeys:
+        factor *= monkey.test
+
     for counter in range(rounds_two):
-        if counter % 100 == 0:
-            print(counter)
         for monkey in monkeys:
             while len(monkey.items) > 0:
                 value = monkey.inspect_item(0)
+                value %= factor
                 value = monkey.apply_worry(value)
                 target = monkey.test_worry_level(value)
                 get_monkey_by_id(target).items.append(value)
