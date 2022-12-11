@@ -18,6 +18,7 @@ class Monkey:
         self.test = test
         self.moneky_true = monkey_true
         self.monkey_false = monkey_false
+        self.inspection_count = 0
     
     def __str__(self) -> str:
         return f"Monkey {self.id}:\n\tItems: {self.items}\n\tOp: new = old {self.op.value} {self.constant}\n\tTest: divisible by {self.test}\n\tIf true: throw to monkey {self.moneky_true}\n\tIf false: throw to monkey {self.monkey_false}"
@@ -26,6 +27,7 @@ class Monkey:
         return f"Monkey {self.id}:\n\tItems: {self.items}\n\tOp: new = old {self.op.value} {self.constant}\n\tTest: divisible by {self.test}\n\tIf true: throw to monkey {self.moneky_true}\n\tIf false: throw to monkey {self.monkey_false}"
 
     def inspect_item(self, item_index):
+        self.inspection_count += 1
         return self.items.pop(item_index)
 
     def apply_worry(self, value):

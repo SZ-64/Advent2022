@@ -3,7 +3,12 @@ from Classes.Monkey import Monkey
 from Classes.Monkey import Operations
 
 
+rounds_one = 20
+rounds_two = 1000
 monkeys = []
+
+def reset():
+    monkeys.clear()
 
 def parse_monkeys():
     lines = Utils.read_file_as_lines("Input\\11-12-22.txt")
@@ -19,7 +24,6 @@ def parse_monkeys():
             int(item[4][29:]),
             int(item[5][30:])
         )
-        #print(str(new_monkey))
         monkeys.append(new_monkey)
 
 
@@ -31,43 +35,56 @@ def get_op(op_tokens):
             if op_tokens[2].isdigit():
                 return (Operations.MULT, op_tokens[2])
             else:
-                return (Operations.MULT, 0)
+                return (Operations.SQUARE, 0)
 
 
 def get_monkey_by_id(id):
-    print(f"Looking for {id}")
     for monkey in monkeys:
-        print(str(monkey))
         if monkey.id == id:
             return monkey
 
 
 def part_one():
-    for monkey in monkeys:
-        
-        while len(monkey.items) > 0:
-            value = monkey.inspect_item(0)
-            print(f"Inspected item {value}")
-            value = monkey.apply_worry(value)
-            print(f"Worried: {value}")
-            value = monkey.apply_relief(value)
-            print(f"Relieved: {value}")
-            target = monkey.test_worry_level(value)
-            print(f"Toss to monkey_true: {target}")
-            get_monkey_by_id(target).items.append(value)
-            print(f"Monkey {target} added item {value}")
+    for _ in range(rounds_one):
+        for monkey in monkeys:
+            while len(monkey.items) > 0:
+                value = monkey.inspect_item(0)
+                value = monkey.apply_worry(value)
+                value = monkey.apply_relief(value)
+                target = monkey.test_worry_level(value)
+                get_monkey_by_id(target).items.append(value)
     
+    inspection_map = {}
     for m in monkeys:
-        print(f"Monkey {m.id} has {m.items}")
+        inspection_map[m.id] = m.inspection_count
+    
+    print(sorted(list(inspection_map.values()), reverse=True))
+
 
 
 def part_two():
-    pass
+    for counter in range(rounds_two):
+        if counter % 100 == 0:
+            print(counter)
+        for monkey in monkeys:
+            while len(monkey.items) > 0:
+                value = monkey.inspect_item(0)
+                value = monkey.apply_worry(value)
+                target = monkey.test_worry_level(value)
+                get_monkey_by_id(target).items.append(value)
+    
+    inspection_map = {}
+    for m in monkeys:
+        inspection_map[m.id] = m.inspection_count
+    
+    print(sorted(list(inspection_map.values()), reverse=True))
         
 
 def main():
     parse_monkeys()
     part_one()
+    reset()
+    parse_monkeys()
     part_two()
 
 
