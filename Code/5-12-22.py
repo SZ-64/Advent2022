@@ -12,7 +12,6 @@ stacks = {
     9: ['G', 'N', 'F', 'H'],
 }
 
-# Comments
 def part_one():
     lines = Utils.read_file_as_lines("Input\\5-12-22.txt")[10:]
     for line in lines:
@@ -27,7 +26,6 @@ def part_one():
     print(stacks)
 
 
-# Comments
 def part_two():
     lines = Utils.read_file_as_lines("Input\\5-12-22.txt")[10:]
     for line in lines:

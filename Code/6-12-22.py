@@ -1,7 +1,6 @@
 import Utils
 
 
-# Comments
 def part_one():
     window = []
     line = Utils.read_file_as_lines("Input\\6-12-22.txt")[0]
@@ -20,7 +19,6 @@ def part_one():
         window.pop(0)
 
 
-# Comments
 def part_two():
     window = []
     line = Utils.read_file_as_lines("Input\\6-12-22.txt")[0]

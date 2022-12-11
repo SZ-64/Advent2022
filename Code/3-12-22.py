@@ -1,7 +1,6 @@
 import Utils
 
 
-# Comments
 def part_one():
     errors = []
     total_priority = 0
@@ -15,7 +14,6 @@ def part_one():
     print(total_priority)
 
 
-# Comments
 def part_two():
     total_priority = 0
     lines = Utils.read_file_as_lines("Input\\3-12-22.txt")

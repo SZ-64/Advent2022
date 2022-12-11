@@ -1,7 +1,6 @@
 import Utils
 
 
-# Comments
 def part_one():
     overlaps = 0
     lines = Utils.read_file_as_lines("Input\\4-12-22.txt")
@@ -17,7 +16,6 @@ def part_one():
     print(overlaps)
 
 
-# Comments
 def part_two():
     overlaps = 0
     lines = Utils.read_file_as_lines("Input\\4-12-22.txt")

@@ -24,7 +24,6 @@ input_map = {
     'Z': 'Scissors'
 }
 
-# Comments
 def part_one():
     total_score = 0
     lines = Utils.read_file_as_lines("Input\\2-12-22.txt")
@@ -43,7 +42,6 @@ def part_one():
     print(total_score)
 
 
-# Comments
 def part_two():
     total_score = 0
     lines = Utils.read_file_as_lines("Input\\2-12-22.txt")

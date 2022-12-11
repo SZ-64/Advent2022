@@ -1,12 +1,10 @@
 import Utils
 
 
-# Comments
 def part_one():
     pass
 
 
-# Comments
 def part_two():
     pass
         
